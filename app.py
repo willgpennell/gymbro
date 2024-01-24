@@ -24,6 +24,8 @@ def getResponse(prompt):
 
     return response.choices[0].message.content
 
+
+
 @app.route("/")
 def home():
     render_template('index.html')
