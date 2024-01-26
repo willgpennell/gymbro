@@ -14,14 +14,15 @@ app = Flask(__name__)
 
 def getResponse(prompt):
     messages = [{"role": "system", "content": "You are a stereotypical gymbro coach who gives helpful advice"}]
-    messages.append([{"role": "user", "content":prompt}])
+    messages.append({"role": "user", "content": prompt})
 
     response = client.chat.completions.create(
-        model = 'gpt-3.5-turbo',
-        messages = messages,
-        max_tokens= 30
+         model = 'gpt-3.5-turbo',
+         messages = messages,
+         max_tokens= 30
     )
 
+    print(response)
     return response.choices[0].message.content
 
 
@@ -34,9 +35,7 @@ def home():
 @app.route("/relay")
 def talk():
     prompt = request.args.get('input')
-    print(prompt)
     responseClean = getResponse(prompt)
-    print(responseClean)
 
 
     return responseClean
