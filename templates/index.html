@@ -35,8 +35,8 @@
             $("#inId").val("");
             $("#content").append('👨‍💼: ' + userInput + '<br><br>');
 
-            $.get("/relay", {input: "userInput"}).done(function (botResponse) {
-                $("#chatbox").append('🦾: '+ botResponse + '<br><br>');
+            $.get("/relay", {input: userInput}).done(function (botResponse) {
+                $("#content").append('🦾: '+ botResponse + '<br><br>');
             });
 
         }

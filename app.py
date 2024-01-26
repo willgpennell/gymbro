@@ -34,7 +34,11 @@ def home():
 @app.route("/relay")
 def talk():
     prompt = request.args.get('input')
+    print(prompt)
     responseClean = getResponse(prompt)
+    print(responseClean)
+
+
     return responseClean
 
 if __name__ == "__main__":
