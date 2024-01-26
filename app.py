@@ -28,12 +28,12 @@ def getResponse(prompt):
 
 @app.route("/")
 def home():
-    render_template('index.html')
+    return render_template('index.html')
 
 
 @app.route("/relay")
 def talk():
-    prompt = request.args.get('in')
+    prompt = request.args.get('input')
     responseClean = getResponse(prompt)
     return responseClean
 
