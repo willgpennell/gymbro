@@ -6,9 +6,13 @@ from dotenv import load_dotenv
 # load private api key from .env
 load_dotenv()
 
-client = OpenAI()
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
+print(client.api_key)
 
-OpenAI.api_key = os.environ["OPENAI_API_KEY"]
+#OpenAI.api_key = os.environ["OPENAI_API_KEY"]
+#client.api_key = os.getenv("OPENAI_API)")
 
 app = Flask(__name__)
 
@@ -17,7 +21,7 @@ def getResponse(prompt):
     messages.append({"role": "user", "content": prompt})
 
     response = client.chat.completions.create(
-         model = 'gpt-3.5-turbo',
+         model = "gpt-3.5-turbo",
          messages = messages,
          max_tokens= 30
     )
