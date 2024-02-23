@@ -22,8 +22,7 @@ def getResponse(prompt):
 
     response = client.chat.completions.create(
          model = "gpt-3.5-turbo",
-         messages = messages,
-         max_tokens= 30
+         messages = messages
     )
 
     print(response)
